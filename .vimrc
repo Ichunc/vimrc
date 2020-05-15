@@ -5,22 +5,24 @@ let mapleader =" "
 
 "language
 language en_US.utf8
+set encoding=utf-8
 
+syntax enable
 set t_Co=256
 colorscheme torte
 
+"tell me the line and column
 set number relativenumber
 set ruler
-
 set cursorline
 set nocursorcolumn
+
+set incsearch
+set smartcase
 
 set splitbelow splitright
 
 "Highlight
-hi Cursorline cterm=none ctermbg=DarkMagenta ctermfg=White
-
-syntax enable
 
 "Tabs
 set expandtab "turn Tab to space
@@ -40,9 +42,6 @@ set wrap
 "mouse usable
 set mouse=a
 
-"set fileencoding=utf-8,utf-16,big5,gb2312,gbk,gb18030,euc-jp
-set encoding=utf-8
-
 "block cursor
 let &t_ti.="\e[1 q"
 let &t_SI.="\e[5 q"
@@ -56,13 +55,28 @@ set path+=**
 autocmd BufWritePre * %s/\s\+$//e
 
 "switch between splits
-map <leader><C-l> <C-w>l
-map <leader><C-k> <C-w>k
-map <leader><C-j> <C-w>j
-map <leader><C-h> <C-w>h
+map <leader>l <C-w>l
+map <leader>k <C-w>k
+map <leader>j <C-w>j
+map <leader>h <C-w>h
+
+"resize splits
+nnoremap <leader>< 5<C-w><
+nnoremap <leader>> 5<C-w>>
 
 "switch between tabs
 nnoremap <Tab> <C-PageDown>
+nnoremap <leader><Tab> <C-PageUp>
 
 "show current command
 set showcmd
+
+"netrw
+let g:netrw_banner=0 "hide that fucking bannner
+let g:netrw_browse_split=2 "file open in new tab
+let g:netrw_liststyle=3 "tree view
+let g:netrw_winsize=25
+
+"snippets
+nnoremap ,html :-1read $HOME/.vim/.skeleton.html<CR>
+
